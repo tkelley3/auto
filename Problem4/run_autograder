@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Set up autograder files
+# copy files from submission directory to the source directory
+cp /autograder/submission/* /autograder/source/
+
+cd /autograder/source
+
+# if you have matplot lib running, uncomment next two lines
+python3 config_matplotlib.py
+echo "backend: Agg" > ~/.config/matplotlib/matplotlibrc
+
+#Other packages?
+#python3 config_numpy.py
+
+# run the unit tests in run_tests shunt to json
+python3 run_tests.py /autograder/results/results.json
+
+# run program as configured to do all the things
+
+# Run the file with sample inputs
+echo -e 'Expecting 3 Graphs\n'
+echo -e 'May not appear\n'
+
+echo -e 'Output:\n'
+python3 sunspots.py

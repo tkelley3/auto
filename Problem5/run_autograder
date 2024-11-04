@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Set up autograder files
+# copy files from submission directory to the source directory
+cp /autograder/submission/* /autograder/source/
+
+cd /autograder/source
+
+# if you have matplot lib running, uncomment next two lines
+#python3 config_matplotlib.py
+# echo "backend: Agg" > ~/.config/matplotlib/matplotlibrc
+
+#Other packages?
+#python3 config_numpy.py
+
+# run the unit tests in run_tests shunt to json
+python3 run_tests.py /autograder/results/results.json
+
+# run program as configured to do all the things
+
+# Run the file with sample inputs
+echo -e 'For a projectile launched with a velocity of 62 m/s at an angle of 25 degrees from a height of 26.5 m:'
+echo -e 't = 6.21 s, maxh = 61.5 m , range = 349 m, final velocity = 66.1 m/s\n\n'
+echo -e 'Your output:\n'
+python3 fun.py

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Set up autograder files
+# copy files from submission directory to the source directory
+cp /autograder/submission/* /autograder/source/
+
+cd /autograder/source
+
+# if you have matplot lib running, uncomment next two lines
+#python3 config_matplotlib.py
+#echo "backend: Agg" > ~/.config/matplotlib/matplotlibrc
+
+# run the unit tests in run_tests shunt to json
+python3 run_tests.py /autograder/results/results.json
+
+# run program as configured to do all the things
+
+# Run the file with sample inputs
+echo -e 'Testing orbit3.py...\n'
+echo -e 'Expected: Various cases...'
+echo -e '243 minutes: 4953.0 km'
+echo -e '5.5 hours: 9444.0 km'
+echo -e '3.4 days: 89154.0 km'
+echo -e '32 minutes: No possible'
+python3 orbit3.py < input.txt

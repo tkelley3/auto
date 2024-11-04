@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Set up autograder files
+# copy files from submission directory to the source directory
+cp /autograder/submission/* /autograder/source/
+
+cd /autograder/source
+
+# if you have matplot lib running, uncomment next two lines
+#python3 config_matplotlib.py
+#echo "backend: Agg" > ~/.config/matplotlib/matplotlibrc
+
+# run the unit tests in run_tests shunt to json
+python3 run_tests.py /autograder/results/results.json
+
+# run program as configured to do all the things
+
+# Run the file with sample inputs
+echo -e 'Testing orbit.py...\n'
+echo -e 'Expected: For satellites to have a period of [94.0, 240.0, 360.0, 1440.0] minutes, they must have an altitude of [  472.  6418. 10389. 35872.] km'
+echo -e '\n'
+echo -e 'Output:\n'
+python3 orbit.py
